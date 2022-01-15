@@ -1,0 +1,27 @@
+{
+  "name": "aperture-discord-bot",
+  "version": "1.0.0",
+  "description": "A discord moderation bot written in JavaScript",
+  "main": "src/index.js",
+  "scripts": {
+    "run": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joennespreuwers/aperture-discord-bot.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "discord",
+    "discord.js"
+  ],
+  "author": "Joenne Spreuwers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joennespreuwers/aperture-discord-bot/issues"
+  },
+  "homepage": "https://github.com/joennespreuwers/aperture-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  }
+}
