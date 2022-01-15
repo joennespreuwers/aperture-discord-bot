@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/banner.png" width= 100%>
+    <img src="assets/icon.png" width= 30%>
     <h2 align="center"> Aperture Discord Bot</h2>
     <p align="center"> A TypeScript Discord moderation bot</p>
 </p>
