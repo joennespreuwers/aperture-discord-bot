@@ -1,2 +1,3 @@
 .prettierrc linguist-language=json
 .lintstagedrc linguist-language=json
+.eslintrc linguist-language=json

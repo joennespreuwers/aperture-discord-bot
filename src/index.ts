@@ -1,7 +1,5 @@
 import Discord, { Intents } from "discord.js";
-import { execPath } from "process";
-import { decodedTextSpanIntersectsWith } from "typescript";
-import { token, prefix } from "../config.json";
+import { token } from "../config.json";
 
 const client = new Discord.Client({
    intents: [
