@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "lint": ""
   },
   "repository": {
     "type": "git",
