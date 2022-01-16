@@ -7,14 +7,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000"
-   height="1000"
-   viewBox="0 0 264.58333 264.58334"
+   width="1280"
+   height="640"
+   viewBox="0 0 338.66666 169.33334"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="icon.svg"
-   inkscape:export-filename="C:\Users\spreu\Documents\GitHub\aperture-discord-bot\assets\icon.png"
+   sodipodi:docname="github-banner.svg"
+   inkscape:export-filename="C:\Users\spreu\Documents\GitHub\aperture-discord-bot\assets\github-banner.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -24,7 +24,8 @@
        id="meshgradient835"
        gradientUnits="userSpaceOnUse"
        x="0"
-       y="0">
+       y="0"
+       gradientTransform="scale(1.28,0.63999998)">
       <meshrow
          id="meshrow15205">
         <meshpatch
@@ -192,15 +193,15 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:url(#meshgradient835);fill-rule:evenodd;stroke:none;stroke-width:0.264583;stroke-linecap:round;paint-order:markers fill stroke;fill-opacity:1"
+       style="fill:url(#meshgradient835);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.239473;stroke-linecap:round;paint-order:markers fill stroke"
        id="rect833"
-       width="264.58334"
-       height="264.58334"
+       width="338.66666"
+       height="169.33333"
        x="0"
        y="0" />
     <g
        id="g15356"
-       transform="translate(-0.49890125,2.9703968)">
+       transform="matrix(0.74137574,0,0,0.74137574,70.885619,-11.208992)">
       <path
          id="path15283"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:138.6px;line-height:1.25;font-family:'square deal';-inkscape-font-specification:'square deal';stroke-width:1.10243"
