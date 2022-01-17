@@ -1,84 +1,57 @@
-import Discord, { Intents } from "discord.js";
-import { token } from "../config.json";
+import { Client, Collection } from "discord.js";
+import { Command, Event } from "./interfaces/index";
+import { commands } from "./commands/index";
+import { events } from "./events/index";
+import { token, prefix } from "../config.json";
+import { allIntents } from "./utils/intents";
 
-const client = new Discord.Client({
-   intents: [
-      Intents.FLAGS.GUILDS,
-      Intents.FLAGS.GUILD_BANS,
-      Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-      Intents.FLAGS.GUILD_INTEGRATIONS,
-      Intents.FLAGS.GUILD_INVITES,
-      Intents.FLAGS.GUILD_MEMBERS,
-      Intents.FLAGS.GUILD_MESSAGES,
-      Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-      Intents.FLAGS.GUILD_MESSAGE_TYPING,
-      Intents.FLAGS.GUILD_PRESENCES,
-      Intents.FLAGS.GUILD_SCHEDULED_EVENTS,
-      Intents.FLAGS.GUILD_VOICE_STATES,
-      Intents.FLAGS.GUILD_WEBHOOKS,
-   ],
-});
+export class Bot extends Client {
+   public commands: Collection<string, Command> = new Collection();
+   public events: Collection<string, Event> = new Collection();
+   public aliases: Collection<string, Command> = new Collection();
+   public prefix: string = prefix;
 
-client.on("ready", () => {
-   console.log("Aperture is ready and working... \n");
+   constructor() {
+      super({ intents: allIntents });
+      console.log("Bot is starting...");
 
-   const guildId = "931968081947922462";
-   const guild = client.guilds.cache.get(guildId);
-   let commands;
-
-   if (guild) {
-      commands = guild.commands;
-   } else {
-      commands = client.application?.commands;
+      this.loadCommands();
+      this.loadEvents();
    }
 
-   commands?.create({
-      name: "ping",
-      description: "Replies with pong.",
-   });
+   loadCommands(): void {
+      console.log("Loading commands...");
+      for (const command of commands) {
+         // Command alias
+         if (command.aliases?.length !== 0) {
+            command.aliases?.forEach(alias => {
+               this.aliases.set(alias, command);
+            });
+         }
 
-   commands?.create({
-      name: "add",
-      description: "Adds 2 numbers",
-      options: [
-         {
-            name: "num1",
-            description: "the first number",
-            required: true,
-            type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
-         },
-         {
-            name: "num2",
-            description: "the second number",
-            required: true,
-            type: Discord.Constants.ApplicationCommandOptionTypes.NUMBER,
-         },
-      ],
-   });
-});
+         // Create slash command
+         if (command.guildId) {
+            const guild = this.guilds.cache.get(command.guildId);
+            if (guild) {
+               console.log(guild.commands);
+            } else {
+               console.log(this.application?.commands);
+            }
+         }
 
-client.on("interactionCreate", async interaction => {
-   if (!interaction.isCommand()) {
-      return;
+         this.commands.set(command.name, command);
+         console.log(`Loaded command: ${command.name}`);
+      }
    }
 
-   const { commandName, options } = interaction;
-
-   if (commandName === "ping") {
-      interaction.reply({
-         content: "pong",
-         ephemeral: false,
-      });
-      console.log("ponged", interaction.user.username);
-   } else if (commandName === "add") {
-      const num1 = options.getNumber("num1") || 0;
-      const num2 = options.getNumber("num2") || 0;
-
-      interaction.reply({
-         content: `The sum is equal to ${num1 + num2}.`,
-         ephemeral: false,
-      });
+   loadEvents(): void {
+      console.log("Loading events...");
+      for (const event of events) {
+         this.on(event.name, event.run.bind(null, this));
+         console.log(`Loaded event: ${event.name}`);
+      }
    }
-});
+}
 
-client.login(token);
+const bot = new Bot();
+bot.login(token);
